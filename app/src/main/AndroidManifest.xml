@@ -27,7 +27,8 @@
         <activity android:name=".ParentLoginActivity" />
         <activity android:name=".TeacherLoginActivity" />
         <activity android:name=".TopStudentDetailsActivity" />
-        <activity android:name=".FeedDetailsActivity"></activity>
+        <activity android:name=".FeedDetailsActivity" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case 2:
-                        intent = new Intent(MainActivity.this, StudentLoginActivity.class);
+                        intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                         break;
                     case 3:
