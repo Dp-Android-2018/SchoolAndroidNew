@@ -88,4 +88,6 @@
     <string name="label_parse_error">Parse error</string>
     <string name="label_unknown_error">Unknown error</string>
     <string name="label_points">Points</string>
+    <string name="base_url" translatable="false">www.google.com</string>
+    <string name="connection_time_out" translatable="false">15</string>
 </resources>
