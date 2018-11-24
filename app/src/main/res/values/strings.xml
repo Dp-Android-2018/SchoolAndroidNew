@@ -2,10 +2,10 @@
     <string name="app_name">School</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_welcome_main">Welcome to advanced schools</string>
-    <string name="msg_choose_main">Select one of the options to be logged in</string>
+    <string name="msg_choose_main">Select an option to sign in</string>
     <string name="label_main_student">Student</string>
     <string name="label_main_teacher">Teacher</string>
-    <string name="label_main_parent">Parent</string>
+    <string name="label_main_parent">Parents</string>
     <string name="title_parent_welcome">Log in to the parent</string>
     <string name="hint_phone_number">Phone Number</string>
     <string name="action_register_btn">Register</string>
@@ -88,4 +88,19 @@
     <string name="label_parse_error">Parse error</string>
     <string name="label_unknown_error">Unknown error</string>
     <string name="label_points">Points</string>
+    <string name="done">done</string>
+    <string name="appbar_scrolling_view_behavior">appbar scrolling</string>
+    <string name="top_student">Top Student</string>
+    <string name="back_arrow">back_arrow</string>
+    <string name="mohamed_said">Mohamed Said</string>
+    <string name="_30_student">30 Student</string>
+    <string name="_10_points">10 Points</string>
+    <string name="_4_points">4 Points</string>
+    <string name="_2_points">2 Points</string>
+    <string name="_3_points">3 Points</string>
+    <string name="_1_points">1 Points</string>
+    <string name="dummy_data">-22 12:38:02.608 597-8879/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:02.828 597-7611/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:02.828 597-7611/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:02.898 597-8691/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:02.898 597-8691/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:02.988 25915-25947/? D/[ACT]:ao: processing priority = HIGH 01-22 12:38:02.988 25915-25947/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.word/files/aria/offlinestoragehigh.db 01-22 12:38:02.988 25915-25947/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.word/files/aria/offlinestoragehigh.db 01-22 12:38:02.988 25915-25947/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.word/files/aria/offlinestoragenormal.db 01-22 12:38:02.988 25915-25947/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.word/files/aria/offlinestoragelow.db 01-22 12:38:03.018 597-9056/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:03.018 597-9056/? E/FRIGATE_BIRD: Error : Permission error! 01-22 12:38:03.048 25952-25970/? D/[ACT]:ao: processing priority = HIGH 01-22 12:38:03.048 25952-25970/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.excel/files/aria/offlinestoragehigh.db 01-22 12:38:03.048 25952-25970/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.excel/files/aria/offlinestoragehigh.db 01-22 12:38:03.048 25952-25970/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.excel/files/aria/offlinestoragenormal.db 01-22 12:38:03.048 25952-25970/? W/System.err: stat failed: ENOENT (No such file or directory) : /data/user/0/com.microsoft.office.excel/files/aria/offlinestoragelow.db 01-22 12:38:03.078 25851-25904/? D/[ACT]:ao: processing priority = HIGH 01-22 12:38:03.078 25851-25904/? W/System.err: stat failed: ENOENT (No</string>
+    <string name="feed_describtion">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</string>
+    <string name="feed_title">Feed Title</string>
+    <string name="image">image</string>
 </resources>

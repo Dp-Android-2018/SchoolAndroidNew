@@ -5,7 +5,7 @@
     <string name="msg_choose_main">Select one of the options to be logged in</string>
     <string name="label_main_student">Student</string>
     <string name="label_main_teacher">Teacher</string>
-    <string name="label_main_parent">Parent</string>
+    <string name="label_main_parent">Parents</string>
     <string name="title_parent_welcome">Log in to the parent</string>
     <string name="hint_phone_number">Phone Number</string>
     <string name="action_register_btn">Register</string>
