@@ -1,0 +1,35 @@
+apply from :'app-configurations.gradle'
+apply from :'libraries-versions.gradle'
+apply from: 'top-level-dependencies.gradle'
+
+///////////////Declare App Dependencies ////////////////////////////////////////////
+def AppModuleDependencies(DependencyHandler handler){
+    jarFileDependency(handler)
+    annotationDependency(handler)
+    appCompatDependencies(handler)
+    testDependencies(handler)
+    constraintLayoutDependencies(handler)
+}
+ext.AppModuleDependencies = this.&AppModuleDependencies
+
+def jarFileDependency(DependencyHandler handler){
+    handler.implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def annotationDependency(DependencyHandler handler){
+    handler.implementation "com.android.support:support-annotations:$versions.annotationsVersion"
+}
+
+def appCompatDependencies(DependencyHandler handler){
+    handler.implementation "com.android.support:appcompat-v7:$versions.appCompatVersion"
+}
+
+def testDependencies(DependencyHandler handler){
+    handler.testImplementation "junit:junit:$versions.junitVersion"
+    handler.androidTestImplementation "com.android.support.test:runner:$versions.testRunnerVersion"
+    handler.androidTestImplementation "com.android.support.test.espresso:espresso-core:$versions.espressoVersion"
+}
+
+def constraintLayoutDependencies(DependencyHandler handler){
+    handler.implementation "com.android.support.constraint:constraint-layout:$versions.constraintLayoutVersion"
+}
