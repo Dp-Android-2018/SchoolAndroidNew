@@ -13,7 +13,7 @@ import dp.schoolandroid.di.scope.SharedPreferenceScope;
 @Module
 public class PreferenceEditorModule {
 
-    @Singleton
+
     @Provides
     @SharedPreferenceScope
     SharedPreferences.Editor getSharedPreferenceEditor(Context context) {
@@ -21,7 +21,7 @@ public class PreferenceEditorModule {
                 , context.MODE_PRIVATE).edit();
     }
 
-    @Singleton
+
     @Provides
     @SharedPreferenceScope
     SharedPreferences getSharedPreference(Context context) {

@@ -8,6 +8,6 @@ import javax.inject.Scope;
 
 @Scope
 @Documented
-@Retention(value = RetentionPolicy.RUNTIME)
+@Retention(value = RetentionPolicy.CLASS)
 public @interface SharedPreferenceScope {
 }
