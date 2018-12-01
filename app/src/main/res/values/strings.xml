@@ -88,6 +88,7 @@
     <string name="label_parse_error">Parse error</string>
     <string name="label_unknown_error">Unknown error</string>
     <string name="label_points">Points</string>
+<<<<<<< HEAD
     <string name="done">done</string>
     <string name="appbar_scrolling_view_behavior">appbar scrolling</string>
     <string name="top_student">Top Student</string>
@@ -113,4 +114,8 @@
     <string name="title">Title</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
+=======
+    <string name="base_url" translatable="false">www.google.com</string>
+    <string name="connection_time_out" translatable="false">15</string>
+>>>>>>> fddabe634abe4b6bfb3df641e27167184bf1621b
 </resources>

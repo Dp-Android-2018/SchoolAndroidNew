@@ -74,3 +74,18 @@ def architectureComponentsDependencies(DependencyHandler handler)
     handler.implementation "android.arch.lifecycle:extensions:$versions.architectureComponents"
     handler.annotationProcessor "android.arch.lifecycle:compiler:$versions.architectureComponents"
 }
+
+
+def daggerDependencies(DependencyHandler handler){
+    handler.implementation "com.google.dagger:dagger:$versions.dagger_version"
+    handler.implementation "com.google.dagger:dagger-android:$versions.dagger_version"
+    handler.implementation "com.google.dagger:dagger-android-support:$versions.dagger_version"
+    handler.annotationProcessor "com.google.dagger:dagger-android-processor:$versions.dagger_version"
+    handler.annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger_version"
+}
+
+def retrofitDependencies(DependencyHandler handler){
+    handler.implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    handler.implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    handler.implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+}
