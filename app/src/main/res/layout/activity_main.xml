@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+<data>
+    <variable
+        name="mainActivityData"
+        type="dp.schoolandroid.viewmodel.MainActiviyViewModel"/>
+</data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="dp.schoolandroid.MainActivity">
+    tools:context="dp.schoolandroid.view.ui.activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -159,7 +165,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/view_done"
         android:visibility="invisible"
         android:layout_width="@dimen/dp31w"
@@ -175,6 +181,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_choose"
         app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/done" />
+        android:contentDescription="@string/done" />-->
 
 </android.support.constraint.ConstraintLayout>
+
+</layout>

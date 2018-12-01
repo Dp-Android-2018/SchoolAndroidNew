@@ -4,12 +4,15 @@ buildscript {
     apply from: 'project-dependencies.gradle'
     addTopLevelFilesRepositories(repositories)
     addTopLevelFileDependencies(dependencies)
+
 }
 
 allprojects {
         addTopLevelFilesRepositories(repositories)
+
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+

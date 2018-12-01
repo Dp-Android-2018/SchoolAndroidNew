@@ -9,6 +9,14 @@ def AppModuleDependencies(DependencyHandler handler){
     appCompatDependencies(handler)
     testDependencies(handler)
     constraintLayoutDependencies(handler)
+    circularImageViewDependencies(handler)
+    selectableroundedimageviewDependency(handler)
+    supportDesignDependency(handler)
+    daggerDependencies(handler)
+    retrofitDependencies(handler)
+    googleDependency(handler)
+    architectureComponentsDependencies(handler)
+
 }
 ext.AppModuleDependencies = this.&AppModuleDependencies
 
@@ -22,6 +30,7 @@ def annotationDependency(DependencyHandler handler){
 
 def appCompatDependencies(DependencyHandler handler){
     handler.implementation "com.android.support:appcompat-v7:$versions.appCompatVersion"
+    handler.implementation "com.android.support:support-v4:$versions.supportV4"
 }
 
 def testDependencies(DependencyHandler handler){
@@ -32,4 +41,36 @@ def testDependencies(DependencyHandler handler){
 
 def constraintLayoutDependencies(DependencyHandler handler){
     handler.implementation "com.android.support.constraint:constraint-layout:$versions.constraintLayoutVersion"
+}
+def circularImageViewDependencies(DependencyHandler handler){
+    handler.implementation "com.mikhaellopez:circularimageview:$versions.circleImageViewVersion"
+}
+
+def selectableroundedimageviewDependency(DependencyHandler handler){
+    handler.implementation "com.joooonho:selectableroundedimageview:$versions.selectableroundedimageviewVersion"
+}
+def supportDesignDependency(DependencyHandler handler){
+    handler.implementation "com.android.support:design:$versions.supportDesignVersion"
+}
+def daggerDependencies(DependencyHandler handler){
+    handler.implementation "com.google.dagger:dagger:$versions.dagger_version"
+    handler.implementation "com.google.dagger:dagger-android:$versions.dagger_version"
+    handler.implementation "com.google.dagger:dagger-android-support:$versions.dagger_version"
+    handler.annotationProcessor "com.google.dagger:dagger-android-processor:$versions.dagger_version"
+    handler.annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger_version"
+}
+
+def retrofitDependencies(DependencyHandler handler){
+    handler.implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    handler.implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    handler.implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+}
+def googleDependency(DependencyHandler handler){
+    handler.implementation "com.google.maps:google-maps-services:$versions.googleMaps"
+    handler.implementation "com.google.android.gms:play-services-maps:$versions.googleMapsservices"
+}
+def architectureComponentsDependencies(DependencyHandler handler)
+{
+    handler.implementation "android.arch.lifecycle:extensions:$versions.architectureComponents"
+    handler.annotationProcessor "android.arch.lifecycle:compiler:$versions.architectureComponents"
 }

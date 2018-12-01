@@ -109,4 +109,8 @@
     <string name="item_3">Top Student</string>
     <string name="item_4">Feeds</string>
     <string name="picker">picker</string>
+    <string name="explode_java">Explode java</string>
+    <string name="title">Title</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
 </resources>

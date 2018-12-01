@@ -1,13 +1,15 @@
-package dp.schoolandroid;
+package dp.schoolandroid.view.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class FeedDetailsActivity extends AppCompatActivity {
+import dp.schoolandroid.R;
+
+public class ConnectionErrorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed_details);
+        setContentView(R.layout.activity_connection_error);
     }
 }

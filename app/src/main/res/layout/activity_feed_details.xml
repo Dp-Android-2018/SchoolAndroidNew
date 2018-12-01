@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="dp.schoolandroid.viewmodel.FeedDetailsActivityViewModel"/>
+    </data>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dp.schoolandroid.FeedDetailsActivity">
+    tools:context="dp.schoolandroid.view.ui.activities.FeedDetailsActivity">
 
     <include
         android:id="@+id/include2"
@@ -91,3 +98,4 @@
         android:contentDescription="@string/image" />
 
 </android.support.constraint.ConstraintLayout>
+</layout>
