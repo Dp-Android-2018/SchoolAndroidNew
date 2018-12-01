@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import dp.schoolandroid.R;
+import dp.schoolandroid.service.repository.remotes.ApiInterfaces;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -40,5 +41,11 @@ public class NetworkModule {
                 .client(okHttpClient)
                 .build();
         return retrofit;
+    }
+
+    @Provides
+    @Singleton
+    ApiInterfaces getRetrofitApiInterfaces(Retrofit retrofit) {
+        return retrofit.create(ApiInterfaces.class);
     }
 }

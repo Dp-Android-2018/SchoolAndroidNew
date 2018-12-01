@@ -12,12 +12,11 @@ import android.support.v4.view.GravityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import dp.schoolandroid.R;
-import dp.schoolandroid.view.ui.activities.ChatActivity;
-import dp.schoolandroid.view.ui.activities.HomeActivity;
+import dp.schoolandroid.view.ui.activity.ChatActivity;
+import dp.schoolandroid.view.ui.activity.HomeActivity;
 
 
 public class BaseFragment extends Fragment {

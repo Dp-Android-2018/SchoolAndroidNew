@@ -1,4 +1,4 @@
-package dp.schoolandroid.view.ui.activities;
+package dp.schoolandroid.view.ui.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import dp.schoolandroid.R;
-import dp.schoolandroid.databinding.ActivityParentHomeBinding;
 import dp.schoolandroid.databinding.ActivityPaymentBinding;
 import dp.schoolandroid.viewmodel.PaymentActivityViewModel;
 

@@ -11,7 +11,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="dp.schoolandroid.view.ui.activities.ProfileActivity">
+    tools:context="dp.schoolandroid.view.ui.activity.ProfileActivity">
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package dp.schoolandroid.view.ui.activities;
+package dp.schoolandroid.view.ui.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;

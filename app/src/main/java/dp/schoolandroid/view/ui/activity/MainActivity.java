@@ -1,6 +1,5 @@
-package dp.schoolandroid.view.ui.activities;
+package dp.schoolandroid.view.ui.activity;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -10,11 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Explode;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;

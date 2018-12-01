@@ -1,11 +1,11 @@
-package dp.schoolandroid.view.ui.activities;
+package dp.schoolandroid.view.ui.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.transition.Explode;
 import android.view.Window;
 
@@ -17,6 +17,7 @@ public class ChatActivity extends AppCompatActivity {
 
     ChatActivityViewModel viewModel;
     ActivityChatBinding binding;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,9 @@ public class ChatActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
-        binding=DataBindingUtil.setContentView(this,R.layout.activity_chat);
-        viewModel=ViewModelProviders.of(this).get(ChatActivityViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
+        viewModel = ViewModelProviders.of(this).get(ChatActivityViewModel.class);
         binding.setViewModel(viewModel);
-
-
         setUpAnimation();
     }
 
