@@ -17,4 +17,5 @@ versions.retrofit= '2.3.0'
 versions.googleMaps= '0.1.20'
 versions.googleMapsservices= '9.0.1'
 versions.architectureComponents='1.1.1'
+versions.rxAndroidVersion = '2.0.2'
 ext.versions = versions

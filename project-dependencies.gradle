@@ -16,12 +16,19 @@ def AppModuleDependencies(DependencyHandler handler){
     retrofitDependencies(handler)
     googleDependency(handler)
     architectureComponentsDependencies(handler)
+    rxDependencies(handler)
 
 }
 ext.AppModuleDependencies = this.&AppModuleDependencies
 
 def jarFileDependency(DependencyHandler handler){
     handler.implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def rxDependencies (DependencyHandler handler){
+    handler.implementation "io.reactivex.rxjava2:rxandroid:$versions.rxAndroidVersion"
+    handler.implementation "io.reactivex.rxjava2:rxjava:$versions.rxAndroidVersion"
+    handler.implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }
 
 def annotationDependency(DependencyHandler handler){

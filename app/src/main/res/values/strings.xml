@@ -113,7 +113,7 @@
     <string name="title">Title</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
-    <string name="base_url" translatable="false">www.google.com</string>
+    <string name="base_url" translatable="false">http://dp-itc.com:4322</string>
     <string name="connection_time_out" translatable="false">15</string>
 
 </resources>
