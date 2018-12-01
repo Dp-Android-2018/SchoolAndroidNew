@@ -8,9 +8,11 @@ import com.google.gson.Gson;
 import javax.inject.Inject;
 
 import dp.schoolandroid.application.MyApp;
+import dp.schoolandroid.di.component.SharedPreferencesSubComponent;
 import dp.schoolandroid.di.modules.PreferenceEditorModule;
 
 public class SharedPreferenceHandler {
+
     @Inject
     SharedPreferences.Editor editor;
 
@@ -18,7 +20,9 @@ public class SharedPreferenceHandler {
     SharedPreferences prefs;
 
     public SharedPreferenceHandler(Context context) {
-        (((MyApp) context).getDaggerNetworkComponent()).getSubComponentSharedPreference(new PreferenceEditorModule()).inject(this);
+        SharedPreferencesSubComponent sharedPreferencesSubComponent = (((MyApp) context).getDaggerNetworkComponent()).
+                getSubComponentSharedPreference(new PreferenceEditorModule());
+        sharedPreferencesSubComponent.inject(this);
     }
 
     public void addStringToSharedPreferences(String title, String value) {
