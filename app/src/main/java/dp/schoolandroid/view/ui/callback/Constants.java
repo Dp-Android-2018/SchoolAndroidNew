@@ -1,4 +1,4 @@
-package dp.schoolandroid.view.ui.constants;
+package dp.schoolandroid.view.ui.callback;
 
 /**
  * Created by DELL on 25/11/2018.

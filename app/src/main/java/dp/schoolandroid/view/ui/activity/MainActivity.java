@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 options = ActivityOptions.makeSceneTransitionAnimation(this);
-                i = new Intent(MainActivity.this, HomeActivity.class);
+                i = new Intent(MainActivity.this, StudentLoginActivity.class);
                 startActivity(i, options.toBundle());
                 break;
             case 3:

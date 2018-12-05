@@ -9,44 +9,41 @@ import android.widget.Toast;
 
 import dp.schoolandroid.application.MyApp;
 import dp.schoolandroid.di.component.NetworkComponent;
+import dp.schoolandroid.service.model.request.StudentRequest;
 import dp.schoolandroid.service.model.request.TeacherRequest;
+import dp.schoolandroid.service.model.response.studentresponse.StudentResponse;
 import dp.schoolandroid.service.model.response.teacherresponse.TeacherResponse;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
-import dp.schoolandroid.view.ui.activity.TeacherLoginActivity;
 import dp.schoolandroid.view.ui.callback.CallBackInterface;
-import dp.schoolandroid.viewmodel.TeacherLoginActivityViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class TeacherLoginRepository {
+public class StudentLoginRepository {
+    private static StudentLoginRepository instance;
 
-    private static TeacherLoginRepository instance;
-
-    private TeacherLoginRepository(){}
-
-    public static TeacherLoginRepository getInstance() {
+    private StudentLoginRepository(){}
+    public static StudentLoginRepository getInstance() {
         if (instance == null) {
-            instance = new TeacherLoginRepository();
+            instance = new StudentLoginRepository();
         }
         return instance;
     }
 
-
     @SuppressLint("CheckResult")
-    public LiveData<TeacherResponse> loginAsTeacher(final Application application, String phoneNumber, String password) {
-        final MutableLiveData<TeacherResponse> data = new MutableLiveData<>();
-        TeacherRequest teacherLoginRequest = getTeacherLoginRequest(phoneNumber, password);
-        getApiInterfaces(application).loginAsTeacher("application/json", "application/json", teacherLoginRequest)
+    public LiveData<StudentResponse> loginAsStudent(final Application application, String ssn, String password) {
+        final MutableLiveData<StudentResponse> data = new MutableLiveData<>();
+        StudentRequest studentLoginRequest = getStudentLoginRequest(ssn, password);
+        getApiInterfaces(application).loginAsStudent("application/json", "application/json", studentLoginRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<TeacherResponse>>() {
+                .subscribe(new Consumer<Response<StudentResponse>>() {
                     @Override
-                    public void accept(Response<TeacherResponse> teacherLoginResponseResponse) throws Exception {
-                        if (teacherLoginResponseResponse.code()== 200){
+                    public void accept(Response<StudentResponse> studentLoginResponseResponse) throws Exception {
+                        if (studentLoginResponseResponse.code()== 200){
                             Toast.makeText(application, "Login Success", Toast.LENGTH_SHORT).show();
-                            data.setValue(teacherLoginResponseResponse.body());
+                            data.setValue(studentLoginResponseResponse.body());
                             startNewActivity(application);
                         }else {
                             Toast.makeText(application, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -62,11 +59,11 @@ public class TeacherLoginRepository {
         return data;
     }
 
-    public TeacherRequest getTeacherLoginRequest(String phoneNumber, String password) {
-        TeacherRequest teacherLoginRequest = new TeacherRequest();
-        teacherLoginRequest.setPhone(phoneNumber);
-        teacherLoginRequest.setPassword(password);
-        return teacherLoginRequest;
+    public StudentRequest getStudentLoginRequest(String ssn, String password) {
+        StudentRequest studentLoginRequest = new StudentRequest();
+        studentLoginRequest.setSsn(ssn);
+        studentLoginRequest.setPassword(password);
+        return studentLoginRequest;
     }
 
     public ApiInterfaces getApiInterfaces(Application application) {

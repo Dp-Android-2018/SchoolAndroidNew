@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dp.schoolandroid.view.ui.fragments.WorkingDayFragment">
+    tools:context="dp.schoolandroid.view.ui.fragment.WorkingDayFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_working_day_schedule"

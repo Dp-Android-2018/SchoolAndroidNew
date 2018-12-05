@@ -1,4 +1,4 @@
-package dp.schoolandroid.view.ui.fragments;
+package dp.schoolandroid.view.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,15 +9,10 @@ import android.view.ViewGroup;
 import dp.schoolandroid.R;
 
 
-public class ScheduleFragment extends Fragment {
+public class WorkingDayFragment extends Fragment {
 
-
-    public ScheduleFragment() {
-        // Required empty public constructor
-    }
-
-    public static ScheduleFragment newInstance() {
-        ScheduleFragment fragment = new ScheduleFragment();
+    public static WorkingDayFragment newInstance() {
+        WorkingDayFragment fragment = new WorkingDayFragment();
         return fragment;
     }
 
@@ -30,7 +25,7 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+        return inflater.inflate(R.layout.fragment_working_day, container, false);
     }
 
 }

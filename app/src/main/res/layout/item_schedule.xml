@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="17dp"
-        android:text="الصف الاول الابتدائي"
+        android:text="class name #1"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"

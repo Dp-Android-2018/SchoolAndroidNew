@@ -2,8 +2,8 @@
 <layout>
     <data>
         <variable
-            name="ViewModel"
-            type="dp.schoolandroid.viewmodel.ParentLoginViewModel"/>
+            name="viewModel"
+            type="dp.schoolandroid.viewmodel.ParentLoginActivityViewModel"/>
     </data>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,6 +53,7 @@
         android:ems="10"
         android:hint="@string/hint_phone"
         android:inputType="phone"
+        android:text="@={viewModel.phoneNumber}"
         android:textColor="#000"
         android:textColorHint="#000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +70,7 @@
         android:layout_marginStart="@dimen/dp7h"
         android:layout_marginTop="@dimen/dp7h"
         android:src="@drawable/ic_data_entered"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/teacher_phone_text"
         app:layout_constraintEnd_toEndOf="@+id/teacher_phone_text"
         app:layout_constraintHorizontal_bias="1.0"
@@ -85,6 +86,7 @@
         android:layout_marginTop="@dimen/dp7h"
         android:background="@drawable/btn_background_blue"
         android:text="@string/action_check"
+        android:onClick="@{viewModel :: login}"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

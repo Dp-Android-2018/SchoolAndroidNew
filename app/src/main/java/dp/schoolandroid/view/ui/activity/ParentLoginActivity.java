@@ -15,14 +15,14 @@ import android.widget.TextView;
 
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.ActivityParentLoginBinding;
-import dp.schoolandroid.viewmodel.ParentLoginViewModel;
+import dp.schoolandroid.viewmodel.ParentLoginActivityViewModel;
 
 public class ParentLoginActivity extends AppCompatActivity {
 
     Button btn_check;
     TextView signIn_textView;
     EditText teacher_phone_text;
-    ParentLoginViewModel viewModel;
+    ParentLoginActivityViewModel viewModel;
     ActivityParentLoginBinding binding;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -34,7 +34,7 @@ public class ParentLoginActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
-        viewModel= ViewModelProviders.of(this).get(ParentLoginViewModel.class);
+        viewModel= ViewModelProviders.of(this).get(ParentLoginActivityViewModel.class);
         binding=DataBindingUtil.setContentView(this,R.layout.activity_parent_login);
         binding.setViewModel(viewModel);
 

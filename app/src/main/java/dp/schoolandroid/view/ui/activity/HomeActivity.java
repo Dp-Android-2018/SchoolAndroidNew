@@ -22,13 +22,13 @@ import android.view.Window;
 import android.widget.Toast;
 
 import dp.schoolandroid.databinding.ActivityHomeBinding;
-import dp.schoolandroid.view.ui.fragments.BaseFragment;
-import dp.schoolandroid.view.ui.fragments.ContactUsFragment;
-import dp.schoolandroid.view.ui.fragments.FeedsFragment;
+import dp.schoolandroid.view.ui.fragment.BaseFragment;
+import dp.schoolandroid.view.ui.fragment.ContactUsFragment;
+import dp.schoolandroid.view.ui.fragment.FeedsFragment;
 import dp.schoolandroid.R;
-import dp.schoolandroid.view.ui.fragments.ScheduleFragment;
-import dp.schoolandroid.view.ui.fragments.SuggestionFragment;
-import dp.schoolandroid.view.ui.fragments.TopStudentFragment;
+import dp.schoolandroid.view.ui.fragment.ScheduleFragment;
+import dp.schoolandroid.view.ui.fragment.SuggestionFragment;
+import dp.schoolandroid.view.ui.fragment.TopStudentFragment;
 import dp.schoolandroid.viewmodel.HomeActivityViewModel;
 
 public class HomeActivity extends AppCompatActivity {

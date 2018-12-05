@@ -9,44 +9,40 @@ import android.widget.Toast;
 
 import dp.schoolandroid.application.MyApp;
 import dp.schoolandroid.di.component.NetworkComponent;
-import dp.schoolandroid.service.model.request.TeacherRequest;
-import dp.schoolandroid.service.model.response.teacherresponse.TeacherResponse;
+import dp.schoolandroid.service.model.request.ParentRequest;
+import dp.schoolandroid.service.model.request.StudentRequest;
+import dp.schoolandroid.service.model.response.parentresponse.ParentResponse;
+import dp.schoolandroid.service.model.response.studentresponse.StudentResponse;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
-import dp.schoolandroid.view.ui.activity.TeacherLoginActivity;
-import dp.schoolandroid.view.ui.callback.CallBackInterface;
-import dp.schoolandroid.viewmodel.TeacherLoginActivityViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class TeacherLoginRepository {
+public class ParentLoginRepository {
+    private static ParentLoginRepository instance;
 
-    private static TeacherLoginRepository instance;
+    private ParentLoginRepository(){}
 
-    private TeacherLoginRepository(){}
-
-    public static TeacherLoginRepository getInstance() {
+    public static ParentLoginRepository getInstance() {
         if (instance == null) {
-            instance = new TeacherLoginRepository();
+            instance = new ParentLoginRepository();
         }
         return instance;
     }
-
-
     @SuppressLint("CheckResult")
-    public LiveData<TeacherResponse> loginAsTeacher(final Application application, String phoneNumber, String password) {
-        final MutableLiveData<TeacherResponse> data = new MutableLiveData<>();
-        TeacherRequest teacherLoginRequest = getTeacherLoginRequest(phoneNumber, password);
-        getApiInterfaces(application).loginAsTeacher("application/json", "application/json", teacherLoginRequest)
+    public LiveData<ParentResponse> loginAsParent(final Application application, String phone) {
+        final MutableLiveData<ParentResponse> data = new MutableLiveData<>();
+        ParentRequest parentLoginRequest = getParenttLoginRequest(phone);
+        getApiInterfaces(application).loginAsParent("application/json", "application/json", parentLoginRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<TeacherResponse>>() {
+                .subscribe(new Consumer<Response<ParentResponse>>() {
                     @Override
-                    public void accept(Response<TeacherResponse> teacherLoginResponseResponse) throws Exception {
-                        if (teacherLoginResponseResponse.code()== 200){
+                    public void accept(Response<ParentResponse> parentLoginResponseResponse) throws Exception {
+                        if (parentLoginResponseResponse.code()== 200){
                             Toast.makeText(application, "Login Success", Toast.LENGTH_SHORT).show();
-                            data.setValue(teacherLoginResponseResponse.body());
+                            data.setValue(parentLoginResponseResponse.body());
                             startNewActivity(application);
                         }else {
                             Toast.makeText(application, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -62,11 +58,10 @@ public class TeacherLoginRepository {
         return data;
     }
 
-    public TeacherRequest getTeacherLoginRequest(String phoneNumber, String password) {
-        TeacherRequest teacherLoginRequest = new TeacherRequest();
-        teacherLoginRequest.setPhone(phoneNumber);
-        teacherLoginRequest.setPassword(password);
-        return teacherLoginRequest;
+    public ParentRequest getParenttLoginRequest(String phone) {
+        ParentRequest parenttLoginRequest = new ParentRequest();
+        parenttLoginRequest.setPhone(phone);
+        return parenttLoginRequest;
     }
 
     public ApiInterfaces getApiInterfaces(Application application) {
@@ -74,6 +69,7 @@ public class TeacherLoginRepository {
         ApiInterfaces apiInterfaces = daggerNetworkComponent.getRetrofitApiInterfaces();
         return apiInterfaces;
     }
+
     public void startNewActivity(Application application){
         Intent intent=new Intent(application,HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
