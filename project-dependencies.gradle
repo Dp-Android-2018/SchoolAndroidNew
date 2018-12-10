@@ -17,6 +17,7 @@ def AppModuleDependencies(DependencyHandler handler){
     googleDependency(handler)
     architectureComponentsDependencies(handler)
     rxDependencies(handler)
+//    butterKnifeDependencies(handler)
 
 }
 ext.AppModuleDependencies = this.&AppModuleDependencies
@@ -30,6 +31,12 @@ def rxDependencies (DependencyHandler handler){
     handler.implementation "io.reactivex.rxjava2:rxjava:$versions.rxAndroidVersion"
     handler.implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }
+/*def butterKnifeDependencies (DependencyHandler handler){
+    handler.implementation "com.jakewharton:butterknife:$versions.rxAndroidVersion"
+    implementation 'com.jakewharton:butterknife:9.0.0-rc2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:'
+    handler.androidTestImplementation "com.jakewharton:butterknife-compiler:$versions.butterKnifeVersion"
+}*/
 
 def annotationDependency(DependencyHandler handler){
     handler.implementation "com.android.support:support-annotations:$versions.annotationsVersion"
@@ -37,6 +44,8 @@ def annotationDependency(DependencyHandler handler){
 
 def appCompatDependencies(DependencyHandler handler){
     handler.implementation "com.android.support:appcompat-v7:$versions.appCompatVersion"
+    handler.implementation "com.android.support:recyclerview-v7:$versions.appCompatVersion"
+    handler.implementation "com.android.support:cardview-v7:$versions.appCompatVersion"
     handler.implementation "com.android.support:support-v4:$versions.supportV4"
 }
 

@@ -1,37 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="dp.schoolandroid.view.ui.fragment.BaseFragment">
-
-    <include
-        android:id="@+id/dayActionBar"
-        layout="@layout/my_custom_bar_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="300dp"
+        android:layout_height="0dp"
+        android:minHeight="200dp"
+        android:contentDescription="TODO"
         android:scaleType="fitXY"
         android:src="@drawable/layer_11"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dayActionBar"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.joooonho.SelectableRoundedImageView
         android:id="@+id/riv_teacher_photo"
         android:layout_width="@dimen/dp100w"
         android:layout_height="@dimen/dp100w"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/layer_14"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
@@ -46,9 +39,9 @@
         android:id="@+id/imageView5"
         android:layout_width="@dimen/dp35w"
         android:layout_height="@dimen/dp35w"
-        android:layout_marginBottom="3dp"
-        android:layout_marginEnd="3dp"
         android:layout_marginTop="0dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
         android:contentDescription="@string/picker"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_add_photo"
@@ -63,9 +56,9 @@
         android:id="@+id/tv_teacher_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="centerCrop"
         android:text="@string/mohammed_said"
         android:textColor="@color/colorWhite"
@@ -80,9 +73,9 @@
         android:id="@+id/tv_teacher_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="centerCrop"
         android:text="mohamed_said250@yahoo.com"
         android:textColor="@color/colorWhite"
@@ -91,30 +84,4 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_teacher_name" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/layer_16"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="86dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="13.3dp"
-        android:textColor="#8d8f9b"
-        android:textSize="22.7sp"
-        android:text="There are no lectures"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
 </android.support.constraint.ConstraintLayout>

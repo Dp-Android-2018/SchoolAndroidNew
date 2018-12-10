@@ -89,7 +89,6 @@
     <string name="label_unknown_error" translatable="false">Unknown error</string>
     <string name="label_points" translatable="false">Points</string>
     <string name="done" translatable="false">done</string>
-    <string name="appbar_scrolling_view_behavior" translatable="false">appbar scrolling</string>
     <string name="top_student" translatable="false">Top Student</string>
     <string name="back_arrow" translatable="false">back_arrow</string>
     <string name="mohamed_said" translatable="false">Mohamed Said</string>
@@ -115,5 +114,6 @@
     <string name="Close" translatable="false">close</string>
     <string name="base_url" translatable="false">http://dp-itc.com:4322</string>
     <string name="connection_time_out" translatable="false">15</string>
+    <string name="mohammed_said">mohammed_said</string>
 
 </resources>

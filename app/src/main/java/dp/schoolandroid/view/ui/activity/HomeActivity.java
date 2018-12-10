@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
 
+import dp.schoolandroid.BaseFragmentWithData;
 import dp.schoolandroid.databinding.ActivityHomeBinding;
 import dp.schoolandroid.view.ui.fragment.BaseFragment;
 import dp.schoolandroid.view.ui.fragment.ContactUsFragment;
@@ -35,9 +36,8 @@ public class HomeActivity extends AppCompatActivity {
 
     HomeActivityViewModel viewModel;
     ActivityHomeBinding binding;
-    public static DrawerLayout drawer;
+    public  static DrawerLayout drawer;
     private ActionBarDrawerToggle t;
-    private NavigationView nv;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -65,12 +65,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void setNavigationDrawer() {
-        drawer = (DrawerLayout) findViewById(R.id.main_activity);
+        drawer = binding.mainActivity;
         t = new ActionBarDrawerToggle(this, drawer, R.string.Open, R.string.Close);
         drawer.addDrawerListener(t);
         t.syncState();
 
-        nv = (NavigationView) findViewById(R.id.nv);
+        NavigationView nv = binding.nv;
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -116,14 +116,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    private void configureToolbar() {
+    /*private void configureToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         assert actionbar != null;
         actionbar.setHomeAsUpIndicator(R.drawable.ic_action_menu);
         actionbar.setDisplayHomeAsUpEnabled(true);
-    }
+    }*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_item1:
                                 item.setIcon(R.drawable.ic_home_on);
-                                selectedFragment = BaseFragment.newInstance();
+                                selectedFragment = BaseFragmentWithData.newInstance();
                                 break;
                             case R.id.action_item2:
                                 item.setIcon(R.drawable.ic_calender_on);

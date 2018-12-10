@@ -1,6 +1,7 @@
 package dp.schoolandroid.view.ui.fragment;
 
 import android.app.ActivityOptions;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,16 +18,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import dp.schoolandroid.R;
+import dp.schoolandroid.databinding.FragmentDayBinding;
+import dp.schoolandroid.databinding.FragmentScheduleBinding;
 import dp.schoolandroid.view.ui.activity.ChatActivity;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
 import dp.schoolandroid.view.ui.adapter.TeacherSchedulePageViewAdapter;
+import dp.schoolandroid.viewmodel.DayFragmentViewModel;
+import dp.schoolandroid.viewmodel.MyCustomBarViewModel;
+import dp.schoolandroid.viewmodel.ScheduleFragmentViewModel;
 
 
 public class ScheduleFragment extends Fragment {
 
-
-
-
+    ScheduleFragmentViewModel viewModel;
+    FragmentScheduleBinding binding;
     public ScheduleFragment() {
         // Required empty public constructor
     }
@@ -46,39 +51,20 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        binding = FragmentScheduleBinding.inflate(inflater, container, false);
+        viewModel = ViewModelProviders.of(this).get(ScheduleFragmentViewModel.class);
+        binding.setViewModel(viewModel);
+        View view = binding.getRoot();
         initUi(view);
         return view;
     }
 
     private void initUi(View view) {
-        ViewPager viewPager = view.findViewById(R.id.viewpager_schedule);
+        binding.actionBar.setViewModel(new MyCustomBarViewModel(getContext()));
+        ViewPager viewPager = binding.viewpagerSchedule;
         TeacherSchedulePageViewAdapter adapter = new TeacherSchedulePageViewAdapter(getFragmentManager());
         viewPager.setAdapter(adapter);
-        TabLayout tabLayout = view.findViewById(R.id.tl_schedule_class);
+        TabLayout tabLayout =binding.tlScheduleClass;
         tabLayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        ImageView action_menu=(ImageView)getView().findViewById(R.id.action_menu_image);
-        action_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HomeActivity.drawer.openDrawer(GravityCompat.START);
-            }
-        });
-        ImageView chat_menu=(ImageView)getView().findViewById(R.id.chat_menu_image);
-        chat_menu.setOnClickListener(new View.OnClickListener() {
-
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity());
-                Intent intent=new Intent(getActivity(),ChatActivity.class);
-                startActivity(intent ,options.toBundle());
-            }
-        });
-        super.onViewCreated(view, savedInstanceState);
     }
 }

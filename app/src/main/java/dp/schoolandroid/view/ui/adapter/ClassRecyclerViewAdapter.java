@@ -1,44 +1,36 @@
 package dp.schoolandroid.view.ui.adapter;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dp.schoolandroid.R;
+import dp.schoolandroid.databinding.ItemClassBinding;
 import dp.schoolandroid.databinding.ItemScheduleBinding;
 import dp.schoolandroid.global.SectionTimeModel;
-import dp.schoolandroid.global.TeacherSchedule;
+import dp.schoolandroid.view.ui.viewholder.ClassViewHolder;
 import dp.schoolandroid.view.ui.viewholder.DayViewHolder;
 
-public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder>{
+public class ClassRecyclerViewAdapter extends RecyclerView.Adapter<ClassViewHolder> {
+    private ArrayList<SectionTimeModel> dayData = getDummyData();
 
-    private ArrayList<SectionTimeModel> dayData=getDummyData();
-
-    public DayRecyclerViewAdapter() {
+    public ClassRecyclerViewAdapter() {
     }
-
-  /*  public void setDayData(ArrayList<SectionTimeModel> dayData) {
-        this.dayData = dayData;
-    }*/
 
     @NonNull
     @Override
-    public DayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemScheduleBinding binding=DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.item_schedule,parent,false);
-        return new DayViewHolder(binding);
+    public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemClassBinding binding=DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.item_class,parent,false);
+        return new ClassViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DayViewHolder holder, int position) {
-        holder.bindDay(dayData.get(position));
+    public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
+        holder.bindClass(dayData.get(position));
     }
 
     @Override

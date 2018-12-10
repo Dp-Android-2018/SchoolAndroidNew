@@ -1,10 +1,12 @@
 package dp.schoolandroid.view.ui.activity;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
@@ -12,8 +14,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import dp.schoolandroid.DayFragment;
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.ActivityTeacherLoginBinding;
+import dp.schoolandroid.service.model.response.teacherresponse.TeacherResponse;
 import dp.schoolandroid.viewmodel.TeacherLoginActivityViewModel;
 
 public class TeacherLoginActivity extends AppCompatActivity {
@@ -23,6 +28,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
     ImageView view_done;
     Button btn_check;
     TeacherLoginActivityViewModel viewModel;
+    DayFragment dayFragment=new DayFragment();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -38,7 +44,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
     public void initViewModel() {
         viewModel = ViewModelProviders.of(this).get(TeacherLoginActivityViewModel.class);
         binding.setViewModel(viewModel);
-       // ObserverViewModel(viewModel);
+//        ObserverViewModel(viewModel);
     }
 
     public void initUi() {
@@ -52,26 +58,26 @@ public class TeacherLoginActivity extends AppCompatActivity {
         getWindow().setEnterTransition(enterTransition);
     }
 
-    public void startNewActivity(){
-        Intent intent=new Intent(this,TopStudentDetailsActivity.class);
-        startActivity(intent);
-    }
-    public void ObserverViewModel(TeacherLoginActivityViewModel viewModel) {
-        if (viewModel !=null) {
-            /*viewModel.getTeacherLoginResponseLiveData().observe(this, new Observer<LoginResponse>() {
+
+    public void ObserverViewModel(final TeacherLoginActivityViewModel viewModel) {
+
+
+            /*.observe(this, new Observer<TeacherResponse>() {
                 @Override
-                public void onChanged(@Nullable LoginResponse teacherLoginResponse) {
-                    if (teacherLoginResponse != null) {
-                        System.out.println("Teacher Data :" + new Gson().toJson(teacherLoginResponse.getTeacherData()));
-                        Toast.makeText(TeacherLoginActivity.this, "Teacher Data :" + new Gson().toJson(teacherLoginResponse.getTeacherData()), Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(TeacherLoginActivity.this, "Observe Error", Toast.LENGTH_SHORT).show();
+                public void onChanged(@Nullable TeacherResponse teacherResponse) {
+                    if (teacherResponse != null) {
+                        Toast.makeText(TeacherLoginActivity.this, "value changed", Toast.LENGTH_SHORT).show();
+                        dayFragment.setBearerToken(teacherResponse.getTeacherData().getApiToken());
+//                            startNewActivity();
                     }
                 }
             });*/
-        }else {
-            Toast.makeText(TeacherLoginActivity.this,"Null Value ",Toast.LENGTH_LONG).show();
-        }
+
     }
 
+    public void startNewActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

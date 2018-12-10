@@ -19,6 +19,7 @@ public class TeacherSchedulePageViewAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 7;
     }
+
     @Override
     public Fragment getItem(int position) {
 

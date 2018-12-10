@@ -5,17 +5,25 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class SectionTimeModel {
+    public SectionTimeModel(String className, String grade, String studentsCount, String from, String to) {
+        this.className = className;
+        this.grade = grade;
+        this.studentsCount = studentsCount;
+        this.from = from;
+        this.to = to;
+    }
+
     @SerializedName("id")
     private String arrayId;
 
     @SerializedName("class")
-    private String classObject;
+    private String className;
 
     @SerializedName("teacher")
-    private String teacherObject;
+    private String teacherName;
 
     @SerializedName("level")
-    private String levelObject;
+    private String grade;
 
     @SerializedName("students_count")
     private String studentsCount;
@@ -34,28 +42,28 @@ public class SectionTimeModel {
         this.arrayId = arrayId;
     }
 
-    public String getClassObject() {
-        return classObject;
+    public String getClassName() {
+        return className;
     }
 
-    public void setClassObject(String classObject) {
-        this.classObject = classObject;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public String getTeacherObject() {
-        return teacherObject;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setTeacherObject(String teacherObject) {
-        this.teacherObject = teacherObject;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
-    public String getLevelObject() {
-        return levelObject;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setLevelObject(String levelObject) {
-        this.levelObject = levelObject;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getStudentsCount() {

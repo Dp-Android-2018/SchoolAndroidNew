@@ -29,6 +29,3 @@ repositories {
 
 AppModuleDependencies(dependencies)
 
-dependencies {
-    implementation 'com.android.support:support-v4:26.+'
-}

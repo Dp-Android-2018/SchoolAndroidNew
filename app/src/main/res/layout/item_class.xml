@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="dp.schoolandroid.viewmodel.ItemClassViewModel"/>
+    </data>
+
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +19,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="17dp"
-        android:text="Class Name #1"
+        android:text="@{viewModel.sectionTimeModel.className}"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
@@ -25,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="7dp"
-        android:text="First grade"
+        android:text="@{viewModel.sectionTimeModel.grade}"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
-        android:text="30 Student"
+        android:text="@{viewModel.sectionTimeModel.studentsCount}"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_class_grade" />
@@ -66,3 +73,4 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_class_number_of_students"/>
 
 </android.support.constraint.ConstraintLayout>
+</layout>

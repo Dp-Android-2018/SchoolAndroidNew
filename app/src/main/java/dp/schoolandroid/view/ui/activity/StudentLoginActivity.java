@@ -1,5 +1,6 @@
 package dp.schoolandroid.view.ui.activity;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -48,16 +49,17 @@ public class StudentLoginActivity extends AppCompatActivity {
     private void initViewModel() {
         viewModel = ViewModelProviders.of(this).get(StudentLoginActivityViewModel.class);
         binding.setViewModel(viewModel);
-        // ObserverViewModel(viewModel);
+         ObserverViewModel(viewModel);
     }
     public void ObserverViewModel(StudentLoginActivityViewModel viewModel) {
         if (viewModel !=null) {
-           /* viewModel.getStudentLoginResponseLiveData().observe(this, new Observer<StudentResponse>() {
+            LiveData<StudentResponse> studentLoginResponseLiveData=viewModel.getStudentLoginResponseLiveData();
+            studentLoginResponseLiveData.observe(this, new Observer<StudentResponse>() {
                 @Override
                 public void onChanged(@Nullable StudentResponse studentResponse) {
-                    Toast.makeText(StudentLoginActivity.this,"Null Value ",Toast.LENGTH_LONG).show();
+
                 }
-            });*/
+            });
         }else {
             Toast.makeText(this,"Null Value ",Toast.LENGTH_LONG).show();
         }

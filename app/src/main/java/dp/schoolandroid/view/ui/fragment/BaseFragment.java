@@ -9,14 +9,20 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 import dp.schoolandroid.R;
+import dp.schoolandroid.global.SectionTimeModel;
 import dp.schoolandroid.view.ui.activity.ChatActivity;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
+import dp.schoolandroid.view.ui.adapter.DayRecyclerViewAdapter;
 
 
 public class BaseFragment extends Fragment {
@@ -62,6 +68,36 @@ public class BaseFragment extends Fragment {
                 startActivity(intent ,options.toBundle());
             }
         });
+//        setUpRecyclerView(view);
         super.onViewCreated(view, savedInstanceState);
     }
+
+    /*private void setUpRecyclerView(View view) {
+        RecyclerView recyclerView=view.findViewById(R.id.base_day_recycler_view);
+        DayRecyclerViewAdapter dayRecyclerViewAdapter=new DayRecyclerViewAdapter(getContext(),getDummyData());
+        recyclerView.setAdapter(dayRecyclerViewAdapter);
+
+        LinearLayoutManager mLinearLayoutManager=new LinearLayoutManager(getContext());
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(mLinearLayoutManager);
+    }
+
+    private ArrayList<SectionTimeModel> getDummyData() {
+        ArrayList<SectionTimeModel> dummyData=new ArrayList<>();
+
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+        dummyData.add(new SectionTimeModel("Java1","Mosaid1","20","9:15 Am","11:15 Am"));
+
+        return dummyData;
+    }*/
 }

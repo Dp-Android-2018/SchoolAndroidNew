@@ -4,9 +4,10 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-public class HomeActivityViewModel extends AndroidViewModel {
+public class ScheduleFragmentViewModel extends AndroidViewModel {
 
-    public HomeActivityViewModel(@NonNull Application application) {
+    public ScheduleFragmentViewModel(@NonNull Application application) {
         super(application);
     }
+
 }

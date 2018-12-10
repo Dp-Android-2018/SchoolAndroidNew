@@ -43,7 +43,7 @@
         <activity android:name=".view.ui.activity.ParentHomeActivity" />
         <activity android:name=".view.ui.activity.ProfileActivity" />
         <activity android:name=".view.ui.activity.StudentsActivity" />
-        <activity android:name=".view.ui.activity.StudentGradeActivity"></activity>
+        <activity android:name=".view.ui.activity.StudentGradeActivity"/>
     </application>
 
 </manifest>

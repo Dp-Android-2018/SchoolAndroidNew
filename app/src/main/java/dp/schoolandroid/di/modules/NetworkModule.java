@@ -42,6 +42,16 @@ public class NetworkModule {
                 .build();
         return retrofit;
     }
+    /*@Provides
+    @Singleton
+    Retrofit provideRetrofit(Context context, OkHttpClient okHttpClient) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(context.getString(R.string.base_url))
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+        return retrofit;
+    }*/
 
     @Provides
     @Singleton

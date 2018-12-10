@@ -17,6 +17,8 @@ import dp.schoolandroid.view.ui.activity.HomeActivity;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ParentLoginRepository {
@@ -34,27 +36,24 @@ public class ParentLoginRepository {
     public LiveData<ParentResponse> loginAsParent(final Application application, String phone) {
         final MutableLiveData<ParentResponse> data = new MutableLiveData<>();
         ParentRequest parentLoginRequest = getParenttLoginRequest(phone);
-        getApiInterfaces(application).loginAsParent("application/json", "application/json", parentLoginRequest)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<ParentResponse>>() {
-                    @Override
-                    public void accept(Response<ParentResponse> parentLoginResponseResponse) throws Exception {
-                        if (parentLoginResponseResponse.code()== 200){
-                            Toast.makeText(application, "Login Success", Toast.LENGTH_SHORT).show();
-                            data.setValue(parentLoginResponseResponse.body());
-                            startNewActivity(application);
-                        }else {
-                            Toast.makeText(application, "Login Failed", Toast.LENGTH_SHORT).show();
-                        }
+        getApiInterfaces(application).loginAsParent("application/json",
+                "application/json", parentLoginRequest).enqueue(new Callback<ParentResponse>() {
+            @Override
+            public void onResponse(Call<ParentResponse> call, Response<ParentResponse> response) {
+                if (response.code()== 200){
+                    Toast.makeText(application, "Login Success", Toast.LENGTH_SHORT).show();
+                    data.setValue(response.body());
+                    startNewActivity(application);
+                }else {
+                    Toast.makeText(application, "Login code: "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
 
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        data.setValue(null);
-                    }
-                });
+            @Override
+            public void onFailure(Call<ParentResponse> call, Throwable t) {
+                Toast.makeText(application, "Login code: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
         return data;
     }
 
