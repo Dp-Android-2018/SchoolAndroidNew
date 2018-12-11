@@ -75,7 +75,7 @@ public class SectionTimeModel {
     }
 
     public String getFrom() {
-        return from;
+        return from+" am";
     }
 
     public void setFrom(String from) {
@@ -83,7 +83,7 @@ public class SectionTimeModel {
     }
 
     public String getTo() {
-        return to;
+        return to+" am";
     }
 
     public void setTo(String to) {

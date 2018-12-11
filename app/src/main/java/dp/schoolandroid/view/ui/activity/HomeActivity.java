@@ -12,18 +12,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
 
-import dp.schoolandroid.BaseFragmentWithData;
+import dp.schoolandroid.view.ui.fragment.BaseFragmentWithData;
 import dp.schoolandroid.databinding.ActivityHomeBinding;
-import dp.schoolandroid.view.ui.fragment.BaseFragment;
 import dp.schoolandroid.view.ui.fragment.ContactUsFragment;
 import dp.schoolandroid.view.ui.fragment.FeedsFragment;
 import dp.schoolandroid.R;
@@ -142,8 +139,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void setBottonNavigationView() {
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.navigation);
+        final BottomNavigationView bottomNavigationView = binding.navigation;
 
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -177,7 +173,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, BaseFragment.newInstance());
+        transaction.replace(R.id.frame_layout, BaseFragmentWithData.newInstance());
         transaction.commit();
     }
 }

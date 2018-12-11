@@ -10,16 +10,16 @@ import dp.schoolandroid.service.repository.remotes.TeacherGetScheduleRepository;
 
 public class DayFragmentViewModel extends AndroidViewModel {
 
-    private LiveData<TeacherScheduleResponse> data;
+//    private LiveData<TeacherScheduleResponse> data;
 
     public DayFragmentViewModel(@NonNull Application application) {
         super(application);
 
-        data=TeacherGetScheduleRepository.getInstance().getTeacherSchedule(application);
+//        data=TeacherGetScheduleRepository.getInstance().getTeacherSchedule(application);
     }
 
-    public LiveData<TeacherScheduleResponse> getData() {
-        return data;
-    }
+//    public LiveData<TeacherScheduleResponse> getData() {
+//        return data;
+//    }
 
 }

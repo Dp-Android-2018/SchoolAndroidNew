@@ -41,7 +41,9 @@ public class TeacherLoginActivityViewModel extends AndroidViewModel {
 
     public void initializeVariables() {
         phoneNumber = new ObservableField<>();
+        phoneNumber.set("0482539377");
         password = new ObservableField<>();
+        password.set("qwe123");
 
     }
 

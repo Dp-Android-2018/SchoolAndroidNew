@@ -16,7 +16,7 @@ import dp.schoolandroid.view.ui.viewholder.ClassViewHolder;
 import dp.schoolandroid.view.ui.viewholder.DayViewHolder;
 
 public class ClassRecyclerViewAdapter extends RecyclerView.Adapter<ClassViewHolder> {
-    private ArrayList<SectionTimeModel> dayData = getDummyData();
+    private ArrayList<SectionTimeModel> dayData;
 
     public ClassRecyclerViewAdapter() {
     }
@@ -35,7 +35,15 @@ public class ClassRecyclerViewAdapter extends RecyclerView.Adapter<ClassViewHold
 
     @Override
     public int getItemCount() {
-        return dayData.size();
+        if (dayData !=null){
+            return dayData.size();
+        }else {
+            return 0;
+        }
+    }
+
+    public void setDayData(ArrayList<SectionTimeModel> dayData) {
+        this.dayData = dayData;
     }
 
     private ArrayList<SectionTimeModel> getDummyData() {

@@ -1,24 +1,19 @@
 package dp.schoolandroid.view.ui.activity;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import dp.schoolandroid.DayFragment;
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.ActivityTeacherLoginBinding;
-import dp.schoolandroid.service.model.response.teacherresponse.TeacherResponse;
 import dp.schoolandroid.viewmodel.TeacherLoginActivityViewModel;
 
 public class TeacherLoginActivity extends AppCompatActivity {
@@ -28,7 +23,6 @@ public class TeacherLoginActivity extends AppCompatActivity {
     ImageView view_done;
     Button btn_check;
     TeacherLoginActivityViewModel viewModel;
-    DayFragment dayFragment=new DayFragment();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

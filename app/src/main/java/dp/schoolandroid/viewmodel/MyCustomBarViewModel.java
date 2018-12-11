@@ -20,7 +20,6 @@ import dp.schoolandroid.view.ui.activity.HomeActivity;
 public class MyCustomBarViewModel {
     ActivityOptions options;
     Context context;
-
     public MyCustomBarViewModel(Context context) {
         this.context = context;
     }

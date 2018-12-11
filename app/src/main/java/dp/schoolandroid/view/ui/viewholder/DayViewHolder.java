@@ -15,7 +15,7 @@ public class DayViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindDay(SectionTimeModel sectionTimeModel){
-        if (binding.getViewModel()==null)
+        if (binding.getViewModel() ==null)
         {
             binding.setViewModel(new ItemScheduleViewModel(sectionTimeModel));
         }else {

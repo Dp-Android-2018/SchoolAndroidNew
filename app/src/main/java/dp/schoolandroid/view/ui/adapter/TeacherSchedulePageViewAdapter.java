@@ -1,16 +1,15 @@
 package dp.schoolandroid.view.ui.adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import dp.schoolandroid.DayFragment;
+import dp.schoolandroid.view.ui.fragment.DayFragment;
 
 public class TeacherSchedulePageViewAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] = new String[] {"Saturday", "Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday"};
-
+    private DayFragment dayFragment;
     public TeacherSchedulePageViewAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -23,20 +22,32 @@ public class TeacherSchedulePageViewAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        return new DayFragment();
-        /*if(position == 0) {
-            return new DayFragment();
-        } else if (position == 1) {
-            return new ColorsFragment();
+        switch (position) {
+            case 0:
+                dayFragment= new DayFragment(0);
+                break;
+            case 1:
+                dayFragment=  new DayFragment(1);
+                break;
+            case 2:
+                dayFragment=  new DayFragment(2);
+                break;
+            case 3:
+                dayFragment=  new DayFragment(3);
+                break;
+            case 4:
+                dayFragment=  new DayFragment(4);
+                break;
+
+            case 5:
+                dayFragment=  new DayFragment(5);
+                break;
+
+            case 6:
+                dayFragment=  new DayFragment(6);
+                break;
         }
-        else if (position == 2) {
-            return new FamilyFragment();
-        }
-        else
-        {
-            return new PhrasesFragment();
-        }*/
-        //return null;
+        return dayFragment;
     }
 
     @Override

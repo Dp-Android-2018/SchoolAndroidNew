@@ -16,6 +16,7 @@ import dp.schoolandroid.service.model.request.TeacherRequest;
 import dp.schoolandroid.service.model.response.teacherresponse.TeacherResponse;
 import dp.schoolandroid.service.model.response.teacherresponse.TeacherScheduleResponse;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
+import dp.schoolandroid.view.ui.adapter.ClassRecyclerViewAdapter;
 import dp.schoolandroid.view.ui.adapter.DayRecyclerViewAdapter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -27,7 +28,6 @@ import retrofit2.Response;
 public class TeacherGetScheduleRepository {
 
     private static TeacherGetScheduleRepository instance;
-    DayRecyclerViewAdapter dayRecyclerViewAdapter = new DayRecyclerViewAdapter();
     private String bearerToken;
     private TeacherGetScheduleRepository(){}
 
@@ -46,9 +46,10 @@ public class TeacherGetScheduleRepository {
             @Override
             public void onResponse(Call<TeacherScheduleResponse> call, Response<TeacherScheduleResponse> response) {
                 if (response.code()== 200){
-                    Toast.makeText(application, "Schedule Request Success", Toast.LENGTH_SHORT).show();
-//                    dayRecyclerViewAdapter.setDayData(response.body().getData().getSat());
-//                    dayRecyclerViewAdapter.setDayData(getDummyData());
+//                    Toast.makeText(application, "Schedule Request Success", Toast.LENGTH_SHORT).show();
+//                    dayRecyclerViewAdapter.setDayData(response.body().getData().getThu());
+//                    Toast.makeText(application, "Thursday"+response.body().getData().getThu().get(0).getClassName(), Toast.LENGTH_SHORT).show();
+//                    classRecyclerViewAdapter.setDayData(response.body().getData().getSat());
                     data.setValue(response.body());
                 }else {
                     Toast.makeText(application, "Login code: "+response.code(), Toast.LENGTH_SHORT).show();
@@ -73,24 +74,6 @@ public class TeacherGetScheduleRepository {
         NetworkComponent daggerNetworkComponent = ((MyApp) application).getDaggerNetworkComponent();
         ApiInterfaces apiInterfaces = daggerNetworkComponent.getRetrofitApiInterfaces();
         return apiInterfaces;
-    }
-    private ArrayList<SectionTimeModel> getDummyData() {
-        ArrayList<SectionTimeModel> dummyData = new ArrayList<>();
-
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-        dummyData.add(new SectionTimeModel("Java1", "Mosaid1", "20", "9:15 Am", "11:15 Am"));
-
-        return dummyData;
     }
 
 }
