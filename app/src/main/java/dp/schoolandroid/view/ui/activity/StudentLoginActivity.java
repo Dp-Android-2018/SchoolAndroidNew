@@ -41,10 +41,6 @@ public class StudentLoginActivity extends AppCompatActivity {
         setUpAnimation();
     }
 
-    private void initUi() {
-        btn_check = (Button) findViewById(R.id.btn_student_login);
-        view_done = (ImageView) findViewById(R.id.view_done);
-    }
 
     private void initViewModel() {
         viewModel = ViewModelProviders.of(this).get(StudentLoginActivityViewModel.class);
@@ -65,17 +61,6 @@ public class StudentLoginActivity extends AppCompatActivity {
         }
     }
 
-    private void checkButton() {
-        btn_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn_check.setVisibility(View.INVISIBLE);
-                view_done.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(StudentLoginActivity.this, TopStudentDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setUpAnimation() {

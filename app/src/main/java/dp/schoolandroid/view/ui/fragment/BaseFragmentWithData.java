@@ -7,18 +7,21 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.QuickContactBadge;
 
 import java.util.ArrayList;
 
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.FragmentBaseWithDataBinding;
 import dp.schoolandroid.global.SectionTimeModel;
+import dp.schoolandroid.view.ui.activity.HomeActivity;
 import dp.schoolandroid.view.ui.adapter.ClassRecyclerViewAdapter;
 import dp.schoolandroid.viewmodel.BaseFragmentWithDataViewModel;
 import dp.schoolandroid.viewmodel.MyCustomBarViewModel;
@@ -42,9 +45,17 @@ public class BaseFragmentWithData extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_base_with_data,container,false);
-        binding.dayActionBar.setViewModel(new MyCustomBarViewModel(getContext()));
+       /* binding.dayActionBar.setViewModel(new MyCustomBarViewModel(getContext()));
         binding.dayActionBar.tvActionBarTitle.setVisibility(View.GONE);
-        binding.dayActionBar.chatMenuImage.setVisibility(View.GONE);
+        binding.dayActionBar.chatMenuImage.setVisibility(View.GONE);"Mohammed Said"*/
+//        binding.collapsingToolbar.setTitle("Mohammed Said");
+
+        binding.actionMenuImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeActivity.drawer.openDrawer(GravityCompat.START);
+            }
+        });
         classRecyclerViewAdapter = new ClassRecyclerViewAdapter();
         binding.baseClassRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayout.VERTICAL,false));
         binding.baseClassRecyclerView.setAdapter(classRecyclerViewAdapter);

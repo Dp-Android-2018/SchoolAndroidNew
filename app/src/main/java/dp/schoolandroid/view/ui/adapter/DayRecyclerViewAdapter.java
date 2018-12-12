@@ -25,6 +25,13 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> 
 
     public static TeacherSchedule weekData=new TeacherSchedule();
     private static ArrayList<SectionTimeModel> dayData = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> saturday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> sunday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> monday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> tuesday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> wednesday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> thursday = new ArrayList<>();
+    private static ArrayList<SectionTimeModel> friday = new ArrayList<>();
 
     private int position;
 
@@ -117,13 +124,6 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> 
             this.dayData = projectList;
             result.dispatchUpdatesTo(this);
         }
-    }*/
-    /*public void setDay() {
-        this.dayData = getDummyData();
-    }*/
-
-    /*public ArrayList<SectionTimeModel> getDayData() {
-        return dayData;
     }*/
 
     private ArrayList<SectionTimeModel> getDummyData() {

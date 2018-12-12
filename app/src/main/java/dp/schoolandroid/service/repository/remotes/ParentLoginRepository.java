@@ -33,9 +33,9 @@ public class ParentLoginRepository {
         return instance;
     }
     @SuppressLint("CheckResult")
-    public LiveData<ParentResponse> loginAsParent(final Application application, String phone) {
+    public LiveData<ParentResponse> loginAsParent(final Application application, String phone,String password) {
         final MutableLiveData<ParentResponse> data = new MutableLiveData<>();
-        ParentRequest parentLoginRequest = getParenttLoginRequest(phone);
+        ParentRequest parentLoginRequest = getParenttLoginRequest(phone,password);
         getApiInterfaces(application).loginAsParent("application/json",
                 "application/json", parentLoginRequest).enqueue(new Callback<ParentResponse>() {
             @Override
@@ -57,9 +57,10 @@ public class ParentLoginRepository {
         return data;
     }
 
-    public ParentRequest getParenttLoginRequest(String phone) {
+    public ParentRequest getParenttLoginRequest(String phone,String password) {
         ParentRequest parenttLoginRequest = new ParentRequest();
         parenttLoginRequest.setPhone(phone);
+        parenttLoginRequest.setPassword(password);
         return parenttLoginRequest;
     }
 

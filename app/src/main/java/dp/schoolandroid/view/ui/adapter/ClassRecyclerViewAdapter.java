@@ -16,7 +16,7 @@ import dp.schoolandroid.view.ui.viewholder.ClassViewHolder;
 import dp.schoolandroid.view.ui.viewholder.DayViewHolder;
 
 public class ClassRecyclerViewAdapter extends RecyclerView.Adapter<ClassViewHolder> {
-    private ArrayList<SectionTimeModel> dayData;
+    private ArrayList<SectionTimeModel> dayData=getDummyData();
 
     public ClassRecyclerViewAdapter() {
     }

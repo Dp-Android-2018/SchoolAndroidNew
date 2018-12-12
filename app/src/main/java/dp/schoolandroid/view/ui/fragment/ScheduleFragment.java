@@ -70,7 +70,7 @@ public class ScheduleFragment extends Fragment {
         ViewPager viewPager = binding.viewpagerSchedule;
         TeacherSchedulePageViewAdapter pageViewAdapter = new TeacherSchedulePageViewAdapter(getFragmentManager());
         viewPager.setAdapter(pageViewAdapter);
-        viewPager.setCurrentItem(3);
+//        viewPager.setCurrentItem(3);
         TabLayout tabLayout = binding.tlScheduleClass;
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -39,12 +39,12 @@ public class ParentLoginActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
 
         setUpAnimation();
-
+/*
         btn_check = (Button) findViewById(R.id.btn_parent_check);
         signIn_textView = (TextView) findViewById(R.id.signIn_textView);
         teacher_phone_text = (EditText) findViewById(R.id.teacher_phone_text);
 
-        checkButton();
+        checkButton();*/
     }
 
     private void checkButton() {
