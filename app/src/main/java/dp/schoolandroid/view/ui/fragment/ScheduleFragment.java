@@ -23,6 +23,7 @@ import android.widget.Toast;
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.FragmentDayBinding;
 import dp.schoolandroid.databinding.FragmentScheduleBinding;
+import dp.schoolandroid.global.TeacherSchedule;
 import dp.schoolandroid.service.model.response.teacherresponse.TeacherScheduleResponse;
 import dp.schoolandroid.view.ui.activity.ChatActivity;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
@@ -37,6 +38,7 @@ public class ScheduleFragment extends Fragment {
 
 
     FragmentScheduleBinding binding;
+    private  TeacherSchedulePageViewAdapter pageViewAdapter;
 
     public ScheduleFragment() {
         // Required empty public constructor
@@ -67,12 +69,6 @@ public class ScheduleFragment extends Fragment {
         binding.actionBar.setViewModel(new MyCustomBarViewModel(getContext()));
         binding.actionBar.tvActionBarTitle.setText("Schedule");
         binding.actionBar.chatMenuImage.setVisibility(View.GONE);
-        ViewPager viewPager = binding.viewpagerSchedule;
-        TeacherSchedulePageViewAdapter pageViewAdapter = new TeacherSchedulePageViewAdapter(getFragmentManager());
-        viewPager.setAdapter(pageViewAdapter);
-//        viewPager.setCurrentItem(3);
-        TabLayout tabLayout = binding.tlScheduleClass;
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -90,10 +86,21 @@ public class ScheduleFragment extends Fragment {
                 Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
                 if (teacherScheduleResponse != null) {
                     Toast.makeText(getContext(), "Thursday" + teacherScheduleResponse.getData().getThu().get(0).getClassName(), Toast.LENGTH_SHORT).show();
-                    DayRecyclerViewAdapter.weekData=teacherScheduleResponse.getData();
+                    TeacherSchedule weekData = teacherScheduleResponse.getData();
+                    initializeViewPager(weekData);
+                   // DayRecyclerViewAdapter.weekData = teacherScheduleResponse.getData();
                     Toast.makeText(getContext(), "size :" + teacherScheduleResponse.getData().getThu().size(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    public void initializeViewPager(TeacherSchedule weekData){
+        ViewPager viewPager = binding.viewpagerSchedule;
+        viewPager.setOffscreenPageLimit(1);
+        pageViewAdapter = new TeacherSchedulePageViewAdapter(getFragmentManager() , weekData);
+        viewPager.setAdapter(pageViewAdapter);
+        TabLayout tabLayout = binding.tlScheduleClass;
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

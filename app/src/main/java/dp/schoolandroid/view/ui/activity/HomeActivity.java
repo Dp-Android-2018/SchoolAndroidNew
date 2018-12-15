@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
     HomeActivityViewModel viewModel;
     ActivityHomeBinding binding;
-    public  static DrawerLayout drawer;
+    public static DrawerLayout drawer;
     private ActionBarDrawerToggle t;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -45,8 +45,8 @@ public class HomeActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
-        binding=DataBindingUtil.setContentView(this,R.layout.activity_home);
-        viewModel=ViewModelProviders.of(this).get(HomeActivityViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        viewModel = ViewModelProviders.of(this).get(HomeActivityViewModel.class);
         binding.setViewModel(viewModel);
 
         setUpAnimation();
@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setUpAnimation(){
+    public void setUpAnimation() {
         Explode enterTransition = new Explode();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_very_long));
         getWindow().setEnterTransition(enterTransition);
@@ -90,12 +90,12 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, "menu_picture_gallery", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_suggestions:
-                        selectedFragment= SuggestionFragment.newInstance();
+                        selectedFragment = SuggestionFragment.newInstance();
                         drawer.closeDrawer(GravityCompat.START);
                         Toast.makeText(HomeActivity.this, "menu_suggestions", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_contact_us:
-                        selectedFragment= ContactUsFragment.newInstance();
+                        selectedFragment = ContactUsFragment.newInstance();
                         drawer.closeDrawer(GravityCompat.START);
                         Toast.makeText(HomeActivity.this, "menu_contact_us", Toast.LENGTH_SHORT).show();
                         break;
@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, "menu_logOut", Toast.LENGTH_SHORT).show();
                         break;
                 }
-                if (selectedFragment !=null){
+                if (selectedFragment != null) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout, selectedFragment);
                     transaction.commit();
@@ -113,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
     /*private void configureToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -124,11 +125,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(t.onOptionsItemSelected(item))
+        if (t.onOptionsItemSelected(item))
             return true;
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -142,34 +144,36 @@ public class HomeActivity extends AppCompatActivity {
         final BottomNavigationView bottomNavigationView = binding.navigation;
 
         bottomNavigationView.setOnNavigationItemSelectedListener
-                (new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment selectedFragment = null;
-                        switch (item.getItemId()) {
-                            case R.id.action_item1:
-                                item.setIcon(R.drawable.ic_home_on);
-                                selectedFragment = BaseFragmentWithData.newInstance();
-                                break;
-                            case R.id.action_item2:
-                                item.setIcon(R.drawable.ic_calender_on);
-                                selectedFragment = ScheduleFragment.newInstance();
-                                break;
-                            case R.id.action_item3:
-                                item.setIcon(R.drawable.ic_student_on);
-                                selectedFragment = TopStudentFragment.newInstance();
-                                break;
-                            case R.id.action_item4:
-                                item.setIcon(R.drawable.ic_feed_on);
-                                selectedFragment = FeedsFragment.newInstance();
-                                break;
-                        }
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_layout, selectedFragment);
-                        transaction.commit();
-                        return true;
-                    }
-                });
+                (
+                        new BottomNavigationView.OnNavigationItemSelectedListener() {
+                            @Override
+                            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                Fragment selectedFragment = null;
+                                switch (item.getItemId()) {
+                                    case R.id.action_item1:
+                                        item.setIcon(R.drawable.ic_home_on);
+                                        selectedFragment = BaseFragmentWithData.newInstance();
+                                        break;
+                                    case R.id.action_item2:
+                                        item.setIcon(R.drawable.ic_calender_on);
+                                        //selectedFragment = ScheduleFragment.newInstance();
+                                        selectedFragment = new ScheduleFragment();
+                                        break;
+                                    case R.id.action_item3:
+                                        item.setIcon(R.drawable.ic_student_on);
+                                        selectedFragment = TopStudentFragment.newInstance();
+                                        break;
+                                    case R.id.action_item4:
+                                        item.setIcon(R.drawable.ic_feed_on);
+                                        selectedFragment = FeedsFragment.newInstance();
+                                        break;
+                                }
+                                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.frame_layout, selectedFragment);
+                                transaction.commit();
+                                return true;
+                            }
+                        });
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ import dp.schoolandroid.view.ui.viewholder.DayViewHolder;
 
 public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> {
 
-    public static TeacherSchedule weekData=new TeacherSchedule();
+    private TeacherSchedule weekData=new TeacherSchedule();
     private static ArrayList<SectionTimeModel> dayData = new ArrayList<>();
     private static ArrayList<SectionTimeModel> saturday = new ArrayList<>();
     private static ArrayList<SectionTimeModel> sunday = new ArrayList<>();
@@ -32,10 +34,12 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayViewHolder> 
     private static ArrayList<SectionTimeModel> wednesday = new ArrayList<>();
     private static ArrayList<SectionTimeModel> thursday = new ArrayList<>();
     private static ArrayList<SectionTimeModel> friday = new ArrayList<>();
-
     private int position;
 
-    public DayRecyclerViewAdapter(int position) {
+    public DayRecyclerViewAdapter(int position ,TeacherSchedule weekData) {
+        System.out.println("Week Data Values Adapter Data :"+new Gson().toJson(weekData));
+        System.out.println("Position Adapter Value Clear :"+position);
+        this.weekData = weekData;
         this.position = position;
     }
 

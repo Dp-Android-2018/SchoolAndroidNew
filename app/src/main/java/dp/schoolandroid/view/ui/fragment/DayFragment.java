@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 import dp.schoolandroid.R;
@@ -32,14 +34,16 @@ import dp.schoolandroid.viewmodel.TeacherLoginActivityViewModel;
 
 public class DayFragment extends Fragment {
 
-   private int position;
+    private int position;
+    private TeacherSchedule weekData;
 
     public DayFragment() {
     }
 
     @SuppressLint("ValidFragment")
-    public DayFragment(int position) {
+    public DayFragment(int position , TeacherSchedule weekData) {
         this.position = position;
+        this.weekData = weekData;
     }
 
     FragmentDayBinding binding;
@@ -52,9 +56,9 @@ public class DayFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_day, container, false);
         DayFragmentViewModel viewModel = ViewModelProviders.of(this).get(DayFragmentViewModel.class);
         binding.setViewModel(viewModel);
-        binding.dayRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
-        DayRecyclerViewAdapter dayRecyclerViewAdapter = new DayRecyclerViewAdapter(position);
+        DayRecyclerViewAdapter dayRecyclerViewAdapter = new DayRecyclerViewAdapter(position , weekData);
         binding.dayRecyclerView.setAdapter(dayRecyclerViewAdapter);
+        binding.dayRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         return binding.getRoot();
     }
 
@@ -64,8 +68,7 @@ public class DayFragment extends Fragment {
 //        observeViewModel(viewModel);
     }
 
-
-   /* private void observeViewModel(DayFragmentViewModel viewModel) {
+    /* private void observeViewModel(DayFragmentViewModel viewModel) {
 
         viewModel.getData().observe(this, new Observer<TeacherScheduleResponse>() {
             @Override

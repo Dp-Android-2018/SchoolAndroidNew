@@ -70,6 +70,7 @@ public class StudentLoginRepository {
         ApiInterfaces apiInterfaces = daggerNetworkComponent.getRetrofitApiInterfaces();
         return apiInterfaces;
     }
+
     public void startNewActivity(Application application){
         Intent intent=new Intent(application,HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

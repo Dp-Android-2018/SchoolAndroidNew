@@ -70,7 +70,8 @@
         android:src="@drawable/img_checked_student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_main_parent_image"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:onClick="handleSelectionEvent"/>
 
     <TextView
         android:id="@+id/tv_main_student_label"
@@ -98,7 +99,8 @@
         android:layout_marginTop="@dimen/dp60h"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:onClick="handleSelectionEvent"/>
 
     <TextView
         android:id="@+id/tv_main_parent_label"
@@ -128,7 +130,8 @@
         android:src="@drawable/img_checked_teacher"
         app:layout_constraintEnd_toStartOf="@+id/iv_main_parent_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:onClick="handleSelectionEvent"/>
 
     <TextView
         android:id="@+id/tv_main_teacher_label"

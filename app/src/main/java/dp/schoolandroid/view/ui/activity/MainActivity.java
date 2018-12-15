@@ -9,160 +9,97 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Slide;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.ActivityMainBinding;
 import dp.schoolandroid.viewmodel.MainActiviyViewModel;
 
-
 public class MainActivity extends AppCompatActivity {
-    //data binding
-    ActivityMainBinding mBinding;
-    public static int TEACHER_SELECTED = 1, STUDENT_SELECTED = 2, PARENT_SELECTED = 3;
-    int selectedTab = -1;
-    ImageView teacherImage;
-    ImageView studentImage;
-    ImageView parentImage;
-    View revealView;
-    TextView studentTextView;
-    TextView parentTextView;
-    TextView teacherTextView;
-    Button chooseButton;
-    ImageView view_done;
-    Intent intent;
-    ActivityOptions options;
-    Intent i;
-    MainActiviyViewModel dataviewModel;
+    private final int TEACHER_SELECTOR = 1, STUDENT_SELECTOR = 2, PARENT_SELECTOR = 3;
+    private ActivityMainBinding mBinding = null;
+    private int mSelectedTab = -1;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        mBinding= DataBindingUtil.setContentView(this,R.layout.activity_main);
-        dataviewModel=ViewModelProviders.of(this).get(MainActiviyViewModel.class);
-        mBinding.setMainActivityData(dataviewModel);
-
-        teacherImage = (ImageView) findViewById(R.id.iv_main_teacher_image);
-        studentImage = (ImageView) findViewById(R.id.iv_main_student_image);
-        parentImage = (ImageView) findViewById(R.id.iv_main_parent_image);
-
-        teacherTextView = (TextView) findViewById(R.id.tv_main_teacher_label);
-        studentTextView = (TextView) findViewById(R.id.tv_main_student_label);
-        parentTextView = (TextView) findViewById(R.id.tv_main_parent_label);
-
-        chooseButton = (Button) findViewById(R.id.btn_choose);
-        view_done = (ImageView) findViewById(R.id.view_done);
-
-//        setupWindowAnimations();
-
-        enterButtonEvent();
-        teacherSelected();
-        parentSelected();
-        studentSelected();
+        bindView();
+        handleSelectionTypeEvent();
     }
 
-    private void enterButtonEvent() {
-        chooseButton.setOnClickListener(new View.OnClickListener() {
+    private void bindView() {
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        MainActiviyViewModel dataviewModel = ViewModelProviders.of(this).get(MainActiviyViewModel.class);
+        mBinding.setMainActivityData(dataviewModel);
+    }
+
+    public void handleSelectionEvent(View view) {
+        if (view.getId() == R.id.iv_main_student_image) {
+            mSelectedTab = STUDENT_SELECTOR;
+        } else if (view.getId() == R.id.iv_main_parent_image) {
+            mSelectedTab = PARENT_SELECTOR;
+        } else if (view.getId() == R.id.iv_main_teacher_image) {
+            mSelectedTab = TEACHER_SELECTOR;
+        }
+        handleTextLabelColor();
+        handleImageResource();
+        mBinding.btnChoose.setBackgroundResource(R.drawable.btn_background_white);
+    }
+
+    private void handleSelectionTypeEvent() {
+        mBinding.btnChoose.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                if (selectedTab != -1) {
-                    StartNextActivity();
+                if (mSelectedTab != -1) {
+                    startNextActivity();
                 }
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void StartNextActivity() {
-        switch (selectedTab) {
-            case 1:
-                options = ActivityOptions.makeSceneTransitionAnimation(this);
-                i = new Intent(MainActivity.this, TeacherLoginActivity.class);
-                startActivity(i, options.toBundle());
+    private void startNextActivity() {
+        Intent loginIntent = null;
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+        switch (mSelectedTab) {
+            case TEACHER_SELECTOR:
+                loginIntent = new Intent(MainActivity.this, TeacherLoginActivity.class);
                 break;
-            case 2:
-                options = ActivityOptions.makeSceneTransitionAnimation(this);
-                i = new Intent(MainActivity.this, StudentLoginActivity.class);
-                startActivity(i, options.toBundle());
+            case STUDENT_SELECTOR:
+                loginIntent = new Intent(MainActivity.this, StudentLoginActivity.class);
                 break;
-            case 3:
-                options = ActivityOptions.makeSceneTransitionAnimation(this);
-                i = new Intent(MainActivity.this, ParentLoginActivity.class);
-                startActivity(i, options.toBundle());
+            case PARENT_SELECTOR:
+                loginIntent = new Intent(MainActivity.this, ParentLoginActivity.class);
                 break;
+            default:
+                loginIntent = null;
         }
-
+        if (loginIntent != null) {
+            startActivity(loginIntent, options.toBundle());
+        }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void setupWindowAnimations() {
-        // Re-enter transition is executed when returning back to this activity
-        Slide slideTransition = new Slide();
-        slideTransition.setSlideEdge(Gravity.LEFT); // Use START if using right - to - left locale
-        slideTransition.setDuration(1000);
-
-        getWindow().setReenterTransition(slideTransition);  // When MainActivity Re-enter the Screen
-        getWindow().setExitTransition(slideTransition);     // When MainActivity Exits the Screen
-
-        // For overlap of Re Entering Activity - MainActivity.java and Exiting TransitionActivity.java
-        getWindow().setAllowReturnTransitionOverlap(false);
+    private void handleTextLabelColor() {
+        mBinding.tvMainStudentLabel.setTextColor(mSelectedTab == STUDENT_SELECTOR ? getTextColor(true) : getTextColor(false));
+        mBinding.tvMainParentLabel.setTextColor(mSelectedTab == PARENT_SELECTOR ? getTextColor(true) : getTextColor(false));
+        mBinding.tvMainTeacherLabel.setTextColor(mSelectedTab == TEACHER_SELECTOR ? getTextColor(true) : getTextColor(false));
     }
 
-
-    private void teacherSelected() {
-        teacherImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                parentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                teacherTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorWhite));
-                selectedTab = TEACHER_SELECTED;
-                teacherImage.setImageResource(R.drawable.img_un_checked_teacher);
-                studentImage.setImageResource(R.drawable.img_checked_student);
-                parentImage.setImageResource(R.drawable.img_checked_parent);
-                chooseButton.setBackgroundResource(R.drawable.btn_background_white);
-            }
-        });
+    private void handleImageResource() {
+        mBinding.ivMainTeacherImage.setImageResource(mSelectedTab == TEACHER_SELECTOR ? R.drawable.img_un_checked_teacher
+                : R.drawable.img_checked_teacher);
+        mBinding.ivMainStudentImage.setImageResource(mSelectedTab == STUDENT_SELECTOR ? R.drawable.img_un_checked_student :
+                R.drawable.img_checked_student);
+        mBinding.ivMainParentImage.setImageResource(mSelectedTab == PARENT_SELECTOR ? R.drawable.img_un_checked_parent :
+                R.drawable.img_checked_parent);
     }
 
-    private void parentSelected() {
-        parentImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                parentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorWhite));
-                teacherTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                selectedTab = PARENT_SELECTED;
-                teacherImage.setImageResource(R.drawable.img_checked_teacher);
-                studentImage.setImageResource(R.drawable.img_checked_student);
-                parentImage.setImageResource(R.drawable.img_un_checked_parent);
-                chooseButton.setBackgroundResource(R.drawable.btn_background_white);
-            }
-        });
-    }
-
-    private void studentSelected() {
-        studentImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorWhite));
-                parentTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                teacherTextView.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorGray));
-                selectedTab = STUDENT_SELECTED;
-                teacherImage.setImageResource(R.drawable.img_checked_teacher);
-                studentImage.setImageResource(R.drawable.img_un_checked_student);
-                parentImage.setImageResource(R.drawable.img_checked_parent);
-                chooseButton.setBackgroundResource(R.drawable.btn_background_white);
-            }
-        });
+    private int getTextColor(boolean isActive) {
+        if (isActive) {
+            return ContextCompat.getColor(getBaseContext(), R.color.colorWhite);
+        }
+        return ContextCompat.getColor(getBaseContext(), R.color.colorGray);
     }
 }
