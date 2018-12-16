@@ -42,6 +42,7 @@ public class TeacherLoginRepository {
                     data.setValue(response.body());
                     Toast.makeText(application, "Login :"+response.body().getTeacherData().getApiToken(), Toast.LENGTH_SHORT).show();
                     TeacherGetScheduleRepository.getInstance().setBearerToken("Bearer "+response.body().getTeacherData().getApiToken());
+                    NewsFeedRepository.getInstance().setBearerToken("Bearer "+response.body().getTeacherData().getApiToken());
                     startNewActivity(application);
                 }
             }

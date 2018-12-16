@@ -163,10 +163,6 @@ public class HomeActivity extends AppCompatActivity {
                                         item.setIcon(R.drawable.ic_student_on);
                                         selectedFragment = TopStudentFragment.newInstance();
                                         break;
-                                    case R.id.action_item4:
-                                        item.setIcon(R.drawable.ic_feed_on);
-                                        selectedFragment = FeedsFragment.newInstance();
-                                        break;
                                 }
                                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                                 transaction.replace(R.id.frame_layout, selectedFragment);

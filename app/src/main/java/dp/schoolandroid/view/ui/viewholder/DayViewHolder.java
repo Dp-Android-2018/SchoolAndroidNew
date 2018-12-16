@@ -1,10 +1,9 @@
 package dp.schoolandroid.view.ui.viewholder;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import dp.schoolandroid.databinding.ItemScheduleBinding;
-import dp.schoolandroid.global.SectionTimeModel;
+import dp.schoolandroid.service.model.global.SectionTimeModel;
 import dp.schoolandroid.viewmodel.ItemScheduleViewModel;
 
 public class DayViewHolder extends RecyclerView.ViewHolder {

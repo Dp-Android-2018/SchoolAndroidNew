@@ -9,20 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-
 import dp.schoolandroid.R;
-import dp.schoolandroid.global.SectionTimeModel;
 import dp.schoolandroid.view.ui.activity.ChatActivity;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
-import dp.schoolandroid.view.ui.adapter.DayRecyclerViewAdapter;
 
 
 public class BaseFragment extends Fragment {

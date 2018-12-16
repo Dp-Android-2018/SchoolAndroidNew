@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.google.gson.Gson;
 
-import dp.schoolandroid.global.TeacherSchedule;
+import dp.schoolandroid.service.model.global.TeacherSchedule;
 import dp.schoolandroid.view.ui.fragment.DayFragment;
 
 public class TeacherSchedulePageViewAdapter extends FragmentPagerAdapter {

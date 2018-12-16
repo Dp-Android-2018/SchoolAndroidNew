@@ -8,47 +8,42 @@ import android.widget.Toast;
 
 import dp.schoolandroid.application.MyApp;
 import dp.schoolandroid.di.component.NetworkComponent;
+import dp.schoolandroid.service.model.response.FeedsResponse;
 import dp.schoolandroid.service.model.response.teacherresponse.TeacherScheduleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TeacherGetScheduleRepository {
+public class NewsFeedRepository {
 
-    private static TeacherGetScheduleRepository instance;
+    private static NewsFeedRepository instance;
     private String bearerToken;
-    private TeacherGetScheduleRepository(){}
+    private NewsFeedRepository(){}
 
-    public static TeacherGetScheduleRepository getInstance() {
+    public static NewsFeedRepository getInstance() {
         if (instance == null) {
-            instance = new TeacherGetScheduleRepository();
+            instance = new NewsFeedRepository();
         }
         return instance;
     }
 
     @SuppressLint("CheckResult")
-    public LiveData<TeacherScheduleResponse> getTeacherSchedule(final Application application) {
-        final MutableLiveData<TeacherScheduleResponse> data = new MutableLiveData<>();
-        getApiInterfaces(application).getTeacherSchedule(bearerToken,
-                "application/json", "application/json").enqueue(new Callback<TeacherScheduleResponse>() {
+    public LiveData<FeedsResponse> getNewsFeed(final Application application) {
+        final MutableLiveData<FeedsResponse> data = new MutableLiveData<>();
+        getApiInterfaces(application).getNewsFeed(bearerToken,
+                "application/json", "application/json").enqueue(new Callback<FeedsResponse>() {
             @Override
-            public void onResponse(Call<TeacherScheduleResponse> call, Response<TeacherScheduleResponse> response) {
-                if (response.code()== 200){
-//                    Toast.makeText(application, "Schedule Request Success", Toast.LENGTH_SHORT).show();
-//                    dayRecyclerViewAdapter.setDayData(response.body().getData().getThu());
-//                    Toast.makeText(application, "Thursday"+response.body().getData().getThu().get(0).getClassName(), Toast.LENGTH_SHORT).show();
-//                    classRecyclerViewAdapter.setDayData(response.body().getData().getSat());
+            public void onResponse(Call<FeedsResponse> call, Response<FeedsResponse> response) {
+                if (response.code() ==200){
                     data.setValue(response.body());
                 }else {
                     Toast.makeText(application, "Login code: "+response.code(), Toast.LENGTH_SHORT).show();
-//                    dayRecyclerViewAdapter.setDayData(getDummyData());
                 }
             }
 
             @Override
-            public void onFailure(Call<TeacherScheduleResponse> call, Throwable t) {
+            public void onFailure(Call<FeedsResponse> call, Throwable t) {
                 Toast.makeText(application, "Login code: "+t.getMessage(), Toast.LENGTH_SHORT).show();
-//                dayRecyclerViewAdapter.setDayData(getDummyData());
             }
         });
         return data;

@@ -1,6 +1,6 @@
 package dp.schoolandroid.viewmodel;
 
-import dp.schoolandroid.global.SectionTimeModel;
+import dp.schoolandroid.service.model.global.SectionTimeModel;
 
 public class ItemScheduleViewModel {
     public SectionTimeModel sectionTimeModel;

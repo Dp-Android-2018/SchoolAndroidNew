@@ -1,8 +1,6 @@
-package dp.schoolandroid.global;
+package dp.schoolandroid.service.model.global;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
 
 public class SectionTimeModel {
     public SectionTimeModel(String className, String grade, String studentsCount, String from, String to) {

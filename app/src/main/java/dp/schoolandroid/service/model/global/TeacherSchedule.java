@@ -1,4 +1,4 @@
-package dp.schoolandroid.global;
+package dp.schoolandroid.service.model.global;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,7 @@
 package dp.schoolandroid.view.ui.fragment;
 
 import android.app.ActivityOptions;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,17 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.QuickContactBadge;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import dp.schoolandroid.R;
 import dp.schoolandroid.databinding.FragmentBaseWithDataBinding;
-import dp.schoolandroid.global.SectionTimeModel;
+import dp.schoolandroid.service.model.global.FeedModel;
+import dp.schoolandroid.service.model.global.SectionTimeModel;
+import dp.schoolandroid.service.model.response.FeedsResponse;
 import dp.schoolandroid.view.ui.activity.HomeActivity;
-import dp.schoolandroid.view.ui.adapter.ClassRecyclerViewAdapter;
+import dp.schoolandroid.view.ui.adapter.NewsFeedRecyclerViewAdapter;
 import dp.schoolandroid.viewmodel.BaseFragmentWithDataViewModel;
-import dp.schoolandroid.viewmodel.MyCustomBarViewModel;
 
 
 public class BaseFragmentWithData extends Fragment {
@@ -33,7 +35,7 @@ public class BaseFragmentWithData extends Fragment {
     ImageView action_menu;
     ImageView chat_menu;
     ArrayList<SectionTimeModel> data;
-    ClassRecyclerViewAdapter classRecyclerViewAdapter;
+    NewsFeedRecyclerViewAdapter classRecyclerViewAdapter;
 
     public static BaseFragmentWithData newInstance() {
         BaseFragmentWithData fragment = new BaseFragmentWithData();
@@ -43,35 +45,45 @@ public class BaseFragmentWithData extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_base_with_data,container,false);
-       /* binding.dayActionBar.setViewModel(new MyCustomBarViewModel(getContext()));
-        binding.dayActionBar.tvActionBarTitle.setVisibility(View.GONE);
-        binding.dayActionBar.chatMenuImage.setVisibility(View.GONE);"Mohammed Said"*/
-//        binding.collapsingToolbar.setTitle("Mohammed Said");
-
         binding.actionMenuImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HomeActivity.drawer.openDrawer(GravityCompat.START);
             }
         });
-        classRecyclerViewAdapter = new ClassRecyclerViewAdapter();
-        binding.baseClassRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayout.VERTICAL,false));
-        binding.baseClassRecyclerView.setAdapter(classRecyclerViewAdapter);
+
         return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         final BaseFragmentWithDataViewModel viewModel = ViewModelProviders.of(this).get(BaseFragmentWithDataViewModel.class);
+        observeViewModel(viewModel);
+        initializeRecyclerViewAdapter();
+    }
+
+    private void initializeRecyclerViewAdapter() {
+        classRecyclerViewAdapter = new NewsFeedRecyclerViewAdapter();
+        binding.baseClassRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayout.VERTICAL,false));
+        binding.baseClassRecyclerView.setAdapter(classRecyclerViewAdapter);
+    }
+
+    private void observeViewModel(BaseFragmentWithDataViewModel viewModel) {
+        viewModel.getData().observe(this, new Observer<FeedsResponse>() {
+            @Override
+            public void onChanged(@Nullable FeedsResponse feedsResponse) {
+                Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
+                if (feedsResponse != null) {
+                    Toast.makeText(getContext(), "Thursday" + feedsResponse.getData().get(0).getTitle(), Toast.LENGTH_SHORT).show();
+                    ArrayList<FeedModel> feedModels = feedsResponse.getData();
+                    classRecyclerViewAdapter.setNewsFeedData(feedModels);
+//                    initializeViewPager(weekData);
+//                    // DayRecyclerViewAdapter.weekData = teacherScheduleResponse.getData();
+//                    Toast.makeText(getContext(), "size :" + teacherScheduleResponse.getData().getThu().size(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
